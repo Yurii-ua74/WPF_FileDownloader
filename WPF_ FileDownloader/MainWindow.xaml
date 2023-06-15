@@ -1,0 +1,89 @@
+﻿<Window x:Class="WPF__FileDownloader.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WPF__FileDownloader"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="350" Width="550">
+    <Window.Resources>
+        <Style x:Key="CustomButtonStyle" TargetType="Button">
+            <Setter Property="HorizontalAlignment" Value="Center" />
+            <Setter Property="Background" Value="Transparent" />
+            <Setter Property="FontWeight" Value="Bold" />
+            <Setter Property="VerticalAlignment" Value="Center" />
+            <Setter Property="Foreground" Value="Yellow" />
+            <Setter Property="Height" Value="39" />
+            <Setter Property="RenderTransformOrigin" Value="0.5,0.5" />
+            <Setter Property="Width" Value="75" />
+        </Style>
+
+        <Style x:Key="CustomBorderStyle" TargetType="Border">
+            <Setter Property="BorderBrush" Value="Black" />
+            <Setter Property="BorderThickness" Value="1" />
+            <Setter Property="CornerRadius" Value="15" />
+            <Setter Property="Margin" Value="325,10,0,10" />
+            <Setter Property="HorizontalAlignment" Value="Left" />
+            <Setter Property="Width" Value="75" />
+            <Setter Property="Background">
+                <Setter.Value>
+                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                        <GradientStop Color="Blue" />
+                        <GradientStop Color="White" Offset="1" />
+                    </LinearGradientBrush>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Window.Resources>
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="43*"/>
+            <RowDefinition Height="62*"/>
+            <RowDefinition Height="36*"/>
+            <RowDefinition Height="193*"/>
+        </Grid.RowDefinitions>
+        <Image Grid.RowSpan="4" Stretch="Fill" Source="/BackFon4.png" />
+
+        <Border Style="{StaticResource CustomBorderStyle}"  Margin="455,10,0,10" Width="75">
+            <Button x:Name="btnDownload" Content="Download" Style="{StaticResource CustomButtonStyle}" Click="btnDownload_Click"/>
+        </Border>
+
+        <Border Style="{StaticResource CustomBorderStyle}"  Margin="370,10,0,10" Width="75">
+            <Button x:Name="btnPause" Content="Pause" Style="{StaticResource CustomButtonStyle}" Click="btnPause_Click" />
+        </Border>
+
+        <Border Style="{StaticResource CustomBorderStyle}"  Margin="285,10,0,10" Width="75">
+            <Button x:Name="btnStop" Content="Stop" Style="{StaticResource CustomButtonStyle}" Click="btnStop_Click" />
+        </Border>
+
+        <Border Style="{StaticResource CustomBorderStyle}"  Margin="200,10,0,10" Width="75">
+            <Button x:Name="btnResume" Content="Resume" Style="{StaticResource CustomButtonStyle}" Click="btnResume_Click" />
+        </Border>
+
+        <Border Style="{StaticResource CustomBorderStyle}"  Margin="115,10,0,10" Width="75">
+            <Button x:Name="btnDelete" Content="Delete" Style="{StaticResource CustomButtonStyle}" Click="btnDelete_Click" />
+        </Border>
+
+        <Border Style="{StaticResource CustomBorderStyle}"  Margin="30,10,0,10" Width="75">
+            <Button x:Name="btnSearch" Content="Search" Style="{StaticResource CustomButtonStyle}" Click="btnSearch_Click" />
+        </Border>
+
+        <Label Content="URL address" HorizontalAlignment="Left" Margin="10,0,0,0" VerticalAlignment="Center" Height="29" Grid.Row="1"
+               Foreground="Yellow" Width="75"/>
+        <TextBox x:Name="txtUrl" Text="{Binding Url, Mode=TwoWay}"
+                 HorizontalAlignment="Left" Margin="90,0,0,0" TextWrapping="Wrap" 
+                 VerticalAlignment="Center" Width="232" Height="62" Grid.Row="1"/>
+        <Label Content="SavePath" HorizontalAlignment="Left" Margin="327,0,0,0" VerticalAlignment="Center" Height="29" Grid.Row="1" Width="59"
+               Foreground="Yellow"/>
+        <TextBox x:Name="txtSavePath" Text="{Binding SavePath, Mode=TwoWay}"
+                 HorizontalAlignment="Left" Margin="391,0,0,0" TextWrapping="Wrap" 
+                 VerticalAlignment="Center" Width="139" Height="28" Grid.Row="1"/>
+        <TextBlock x:Name ="txblStatus" Margin="5,5,317,0" Grid.Row="2" TextWrapping="Wrap" Foreground="White" RenderTransformOrigin="0.5,0.5" Height="214" VerticalAlignment="Top" Grid.RowSpan="2"/>
+        <ProgressBar x:Name="progressStatus" HorizontalAlignment="Left" Height="16" Margin="238,0,0,0" Grid.Row="2" VerticalAlignment="Center" Width="292"
+                     IsIndeterminate="False" Background="#FF02BD00" Foreground="#FFF44B07" Maximum = "10000000"/>
+
+    </Grid>
+</Window>
+
+    
